@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        header {
+            background-image: url('https://yt3.googleusercontent.com/Q5HaOgFeb6yNBZUt4FB5b7hPSz8gwpl126aqCHFyAcG9uzIhBeCPvCybgm9pLyis6QfiEypL=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .avatar {
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 120px;
+            height: 120px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: auto;
+            margin: 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .video {
+            width: 550px;
+            margin: 10px;
+        }
+      
+      a {
+        color: cyan;
+      }
+
+        @media (max-width: 550px) {
+            /* Styles for phone resolutions and landscape mode */
+            .video {
+                width: 100%; /* Videos will take the full width of the screen */
+            }
+        }
+
+        @media (min-width: 551px) and (orientation: portrait) {
+            /* Styles for portrait mode on devices with width greater than 550px */
+            .video-container {
+                flex-wrap: wrap;
+            }
+
+            .video {
+                flex-grow: 1;
+            }
+        }
+    </style>
+    <title>Luminary - R7 Roblox Arsenal Player</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="avatar">
+            <img src="https://yt3.googleusercontent.com/SyfoVJiVFYw8pghJ1u3UHP6615l7r4qEwVqI2_k37rF_2oupbB4l5fsuAeZGmiP-kpTqku0d2w=s176-c-k-c0x00ffffff-no-rj" alt="Luminary's Profile Picture">
+        </div>
+        <h1>Luminary</h1>
+        <nav>
+            <a href="https://www.youtube.com/@Luminarye" target="_blank">
+                <img src="https://hdclipartall.com/images/youtube-clipart-youtube-square-icons-1600x1600.png" alt="YouTube Icon">
+            </a>
+            <a href="https://discord.com/invite/ZzbNu3tg" target="_blank">
+                <img src="https://musician.lenwe.io/import/img/discord-icon.png" alt="Discord Icon">
+            </a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>About Luminary</h2>
+        <p>
+            Luminary is an R7 Roblox Arsenal player known for his extremely epic skills and gameplay. He has gained a significant following on various social media platforms and regularly shares his gameplay videos, montages, and highlights with his fans.
+        </p>
+    </section>
+    <section>
+        <h2>Latest Videos</h2>
+        <div class="video-container">
+            <iframe class="video" src="https://www.youtube.com/embed/0NnKa1xBulA" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video" src="https://www.youtube.com/embed/b1k3z9zFF00" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video" src="https://www.youtube.com/embed/BswsG61q9S4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Luminary. All rights reserved. | Website Made By <a href="https://www.youtube.com/@immayr">@immayr</a></p>
+    </footer>
+
+    <script>
+        function scaleVideos() {
+            // No need to modify this part
+            const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+            if (screenHeight > screenWidth && screenWidth > 1) {
+                const videoContainer = document.querySelector('.video-container');
+                const videos = videoContainer.querySelectorAll('.video');
+                const videoWidth = 550;
+                const maxVideosPerRow = Math.floor(screenWidth / videoWidth);
+                const videosPerRow = Math.min(maxVideosPerRow, videos.length);
+                const scaledWidth = Math.floor(screenWidth / videosPerRow) - 20;
+
+                videos.forEach(video => {
+                    video.style.width = scaledWidth + 'px';
+                });
+
+                videoContainer.style.flexWrap = 'wrap';
+                videos.forEach(video => {
+                    video.style.flexGrow = '1';
+                });
+            } else {
+                const videos = document.querySelectorAll('.video');
+                videos.forEach(video => {
+                    video.style.width = '550px';
+                });
+
+                const videoContainer = document.querySelector('.video-container');
+                videoContainer.style.flexWrap = 'nowrap';
+                videos.forEach(video => {
+                    video.style.flexGrow = '0';
+                });
+            }
+        }
+
+        // Scale videos initially and on window resize
+        window.addEventListener('load', scaleVideos);
+        window.addEventListener('resize', scaleVideos);
+
+    </script>
+</body>
+</html>
